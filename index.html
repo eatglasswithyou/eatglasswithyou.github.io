@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Boriell</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+        <script type="text/javascript" src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/imgViewer2.js"></script>
+        
+        <script src="https://unpkg.com/leaflet-responsive-popup@0.2.0/leaflet.responsive.popup.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-responsive-popup@0.2.0/leaflet.responsive.popup.css" />
+
+        <link rel="stylesheet" href="css/leaflet-beautify-marker-icon.css">
+        <script src="js/leaflet-beautify-marker-icon.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Welcome to Boriell</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.png" alt="..." /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#regions">Regions & Map</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Arts & Education</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Places of Interest</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#govh">Government & History</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">NPCs</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Welcome to 
+                        <span class="text-primary">Boriell</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        world info management ·
+                        <a href="https://www.dndbeyond.com/campaigns/2069622">dndbeyond</a>
+                    </div>
+                    <h2>Boriell</h1>
+                    <p class="lead mb-5">is a country in Central and Western Murandar Covering an area of (137,847 sq mi), it lies between the Beaufort and Tellan seas to the north, and the Safi to the south. It borders Fero to the north, Heleta and the Naujan to the east,  Bukovce to the south, and Anđelkovska Mahala  to the west. <br> <br>There are 4 states of Boriell, which are controlled under the democratically elected council of Raal, which is comprised of two leaders from every state. Below are these states listed in order of the area, from Silas with the greatest area, to Guin with the least.</p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
+                        <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="regions">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Regions</h2>
+
+                            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; min-width: 320px;">
+            <tr>
+            <td style="padding: 10px">
+                <h1 align="center">Interactive Map of Boriell</h1>
+                <div align="center">
+                    <img  id="image1" src="assets/img/bb2.jpeg" width="100%" />
+                </div>
+                <p style="margin:10px 5% 10px 5%;text-align: center;">Click on the map to bring up information about each marker</p>
+            </td>
+            </tr>
+        </table>
+
+        <!-- Begin interactive Map -->
+        <script type="text/javascript">
+        ;(function($) {
+            $.widget("wgm.imgNotes2", $.wgm.imgViewer2, {
+                options: {
+        /*
+         *  Default action for addNote callback
+        */
+                    addNote: function(data) {
+                        var map = this.map,
+                            loc = this.relposToLatLng(data.x, data.y);
+                        var popup = L.responsivePopup({ hasTip: true, autoPan: false}).setContent(data.note);
+                        var icon = L.BeautifyIcon.icon({icon: 'map-marker',
+                                                        borderColor: '#ffffff',
+                                                        textColor: '#ecd268',
+                                                        backgroundColor: 'transparent'
+                        });
+                        
+                        L.marker(loc, {icon: icon}).addTo(map).bindPopup(popup);
+                    }
+                    
+                },
+                
+        /*
+         *  Add notes from a javascript array
+         */
+                import: function(notes) {
+                    if (this.ready) {
+                        var self = this;
+                        $.each(notes, function() {
+                            self.options.addNote.call(self, this);
+                        }); 
+                    }
+                }
+            });
+            $(document).ready( function() {
+                var $img = $("#image1").imgNotes2( {
+                                onReady: function() {
+                                    var notes = [   {x: "0.615", y:"0.45", note:"Calidan"}, 
+                                                    {x: "0.56", y:"0.4", note: "Valley of the Prophet"},
+                                                    {x: "0.7", y:"0.15", note: "Dilwarden"},
+                                                    {x: "0.699", y:"0.38", note: "Wardens"},
+                                                    {x: "0.6", y:"0.265", note: "Wychwood"},
+                                                    {x: "0.31", y:"0.1", note: "Sinhue"},
+                                                    {x: "0.46", y:"0.153", note: "Edenside"},
+                                                    {x: "0.46", y:"0.25", note: "River of Eden"},
+                                                    {x: "0.26", y:"0.38", note: "Danbry"},
+                                                    {x: "0.4", y:"0.65", note: "Regina"},
+                                                    {x: "0.3", y:"0.68", note: "Summer Forest"},
+                                                    {x: "0.31", y:"0.83", note: "Heavensfall"},
+                                                    {x: "0.48", y:"0.68", note: "Valiant"},
+                                                    {x: "0.64", y:"0.68", note: "Edgarton"},
+                                                    {x: "0.699", y:"0.8", note: "Belville"},
+                                                    {x: "0.57", y:"0.92", note: "Port au Diche"},
+                                                    {x: "0.78", y: "0.68", note: "Nanville"}];
+                                    this.import(notes);
+                                }
+                });
+            });
+        })(jQuery);
+        </script>
+
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Silas</h3>
+                            <div class="subheading mb-3">The Star of The North</div>
+                            <p>largest region of Boriell and to the north. This is where the democratic council sits and touches both the Beaufort and the Tellan seas. It is known for the magnificent port of <b>Edenside</b>, as well as home to the regions most pronounced colleges for <b>magic and bardry.</b></p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Edenside, Silas</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Ostego</h3>
+                            <div class="subheading mb-3">Strength united is stronger</div>
+                            <p>second largest region.  Borders the Tellan sea and the country of Heleta, to the east. Home to the Warden school of magic.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Dilwarden, Ostego</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Hiltonia</h3>
+                            <div class="subheading mb-3">We wish to remain what we are</div>
+                            <p>second largest region. Lots of major economic centers. Borders the Tellan sea and the country of Heleta, to the east. Home to the Warden school of magic.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Heavensfall, Hiltonia</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Guin</h3>
+                            <div class="subheading mb-3">Truth prevails</div>
+                            <p>Guin is the smallest, and borders the Safi sea as well as the Beaufort. It is the home to many of the most prominent religious temples.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Edgarton, Guin</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Education-->
+            <section class="resume-section" id="education">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Higher Learning</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Sinhue</h3>
+                            <div class="subheading mb-3">College of Magic</div>
+                            <div>Sinhue was founded during the year 67 by the great Hiltonian witch Avani Espinoza who served as the first head of the school. She was succeeded after her mysterious death by Professor Lester Cortez, who established Sinhue's reputation for emphasizing the necessity of free education.<br><br>Sinhue was famous for its acceptance of wild magic sorcery, and was known to have educated (and later expelled) <b>Hawa Parra</b> before his ascension as one of history's most dangerous criminals as leader of the Storm. Professor Bianka Beard, a former Headmaster, was in the service of the last King, <b>Dario Rossi</b> as head mage.</div>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Foer, Silas</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Wardens</h3>
+                            <div class="subheading mb-3">Univeristy of Might</div>
+                            <p>Founded sometime before the 290s, Wardens has had many noteworthy students over the years. Most prominent were Imaani Salazar, the general who lead the war against the invasion of Bukovice and freed the city of Nanville. Situated in the Deyfall Mountains, visitors speak of the breath-taking beauty of a chateau surrounded by formal gardens and lawns created out of the mountainous landscape by the students as a part of their training. Wardens is dedicated to the physical arts of mind and body, training students in hand to hand combat, weapons, leadership and discipline. </p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Anwarden, Ostego</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Valiant</h3>
+                            <div class="subheading mb-3">Trades school</div>
+                            <p>Finding an apprenticeship is always an option, but anyone with a degree from Valiant will never find their shop in need of customers. Valiant teaches the trades. Students at valiant may learn to become more skilled at any number of trades including: midwifery, medical healing, carpentry, construction, wood working, shoe making, cobbling, leatherworking, and the like.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Valiant, Hiltonia</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Calidan</h3>
+                            <div class="subheading mb-3">Companions school</div>
+                            <p>Calidan is an educational facility for the Companions Guild. All companions must register and attend the univeristy. <b>A Companion is a skilled, well-educated and well-respected member of a guild of professional courtesans/entertainers.</b> Companions are culturally well-educated with training in a number of areas, including psychology, music fencing, and languages, as well as unarmed martial arts.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Mouth, Ostego</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Bellville</h3>
+                            <div class="subheading mb-3">College of the Arts</div>
+                            <p>GPA: 3.56</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Sunbridge, Guin</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Skills-->
+            <section class="resume-section" id="skills">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Places of Interest</h2>
+                    <div class="subheading mb-3">Cities, markets, and landmarks</div>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Wychwood
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Summer Forest
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Port au Diche
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Valley of the Prophet
+                        </li>                        
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Dilwarden
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Interests-->
+            <section class="resume-section" id="govh">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Government & History</h2>
+                    <h3>The time until <span class="text-primary">Bori</span></h3>
+                    <p>Before the council, before Bori came to this land, the area was two separate kingdoms, warring with one another. The mightiest of all was the Hillands. The Hilland was ruled at the time by the cruel tyrant Edgar. Edgar Tabrizi eventually conquered the northern realm, and took the opposing king's daughter as a wife, Regina. Regina was already in love with the man who would become Bori, captain of her father's guard. Bori was a kind and just man who believed in freedom and good will towards all.</p>
+                    <p>He publicly challenged Edgar to a fight, and being a prideful man, Edgar accepted. Being a deceitful man, he also cheated. As he began to lose the combat, Edgar had arranged for his servants to threaten the life of Regina to force Bori to throw the fight. Bori agreed to throw the fight, but Regina was killed anyway. witnessing the death of his beloved, Bori grew so powerful he became a God and slay Edgar where he stood. This is how the <b>Wychwood</b> came to be, as Bori's anger destroyed all life within the nearby woods.</p>
+                    <p>Bori became the new ruler of the realm and in witnessing his goodness and power, became the primary god of the region.
+                    <h3><span class="text-primary">Boriell</span> Today</h3>
+                    <p>Boriell is ruled by a council of elders called "The Four" each chosen at birth by as a reincarnation of his spirit. When the old dies, a new one is born, and a search begins for the new member. Each of the four oversees an area directly, as indicated above, and this is where the new child is born.
+                    </p>
+                    <ul class="fa-ul mb-0">
+                        <li><span class="fa-li"><i class="fas fa-plus"></i></span>The Hands: Silas</li>                        
+                        <li><span class="fa-li"><i class="fas fa-plus"></i></span>The Eyes: Ostego</li>
+                        <li><span class="fa-li"><i class="fas fa-plus"></i></span>The Heart: Hiltonia</li>
+                        <li><span class="fa-li"><i class="fas fa-plus"></i></span>The Mouth: Guin</li>
+                    </ul>
+                    <p class="mb-5">The council convenes monthly to oversee and matters of the realm, including: major trials, new dangers, political treaties, as well as matters of budget. The last noteable trial the council oversaw was that of <b>Hawa Parra</b>, who attempted to overthrow the government & lost in a fight with Bori himself.</p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Awards-->
+            <section class="resume-section" id="awards">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">NPCs</h2>
+
+                </div>
+            </section>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
